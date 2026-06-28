@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN SYSTEM — Landing Page de Infoproductos
+   ============================================================ */
+
+/* ---- Google Fonts ya cargadas en index.html ---- */
+
+/* ---- Variables ---- */
+:root {
+  /* Paleta principal — Azul eléctrico y naranja de conversión */
+  --primary: #6C63FF;
+  --primary-dark: #5A52E0;
+  --primary-light: #8B84FF;
+  --accent: #FF6B35;
+  --accent-dark: #E85A24;
+  --accent-light: #FF8C5A;
+
+  /* Fondo oscuro */
+  --bg-dark: #0A0A14;
+  --bg-card: #12121E;
+  --bg-card-hover: #1A1A2E;
+  --bg-section: #0D0D1A;
+
+  /* Texto */
+  --text-primary: #F0F0FF;
+  --text-secondary: #A0A0C0;
+  --text-muted: #6060808;
+
+  /* Gradientes */
+  --grad-hero: linear-gradient(135deg, #0A0A14 0%, #1a0a2e 50%, #0A0A14 100%);
+  --grad-primary: linear-gradient(135deg, #6C63FF 0%, #8B84FF 100%);
+  --grad-accent: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+  --grad-card: linear-gradient(135deg, #12121E 0%, #1A1A2E 100%);
+
+  /* Bordes y sombras */
+  --border: rgba(108, 99, 255, 0.2);
+  --border-accent: rgba(255, 107, 53, 0.4);
+  --shadow-primary: 0 20px 60px rgba(108, 99, 255, 0.3);
+  --shadow-accent: 0 20px 60px rgba(255, 107, 53, 0.3);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  /* Tipografía */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Espaciado */
+  --section-padding: 80px 20px;
+  --max-width: 860px;
+  --radius: 16px;
+  --radius-lg: 24px;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---- Utilidades globales ---- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  background: rgba(108, 99, 255, 0.12);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.section-label.accent {
+  color: var(--accent-light);
+  background: rgba(255, 107, 53, 0.12);
+  border-color: var(--border-accent);
+}
+
+/* ---- Botón de compra principal ---- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--grad-accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 18px 40px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--shadow-accent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(255, 107, 53, 0.5);
+  filter: brightness(1.05);
+}
+
+.btn-primary:hover::before { left: 100%; }
+
+.btn-primary:active { transform: translateY(0) scale(0.99); }
+
+/* ---- Animaciones ---- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(108, 99, 255, 0.8); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  :root { --section-padding: 60px 16px; }
+  .btn-primary { font-size: 1rem; padding: 16px 28px; }
+}
