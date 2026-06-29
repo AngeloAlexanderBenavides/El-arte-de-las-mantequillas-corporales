@@ -19,35 +19,6 @@
     z-index: 1;
   }
 
-  /* Text color for strong tags on light backgrounds (Pain, Guarantee, etc) */
-  .bg-white strong, .bg-white b,
-  .bg-gray-50 strong, .bg-gray-50 b {
-    @apply text-brand-purple;
-  }
-  
-  /* Highlight effect for strong on light backgrounds */
-  .bg-white strong::after, .bg-white b::after,
-  .bg-gray-50 strong::after, .bg-gray-50 b::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-color: rgba(238, 158, 211, 0.3); /* brand-lightpink with opacity */
-    z-index: -1;
-    border-radius: 2px;
-  }
-
-  /* Text color for strong tags on dark/colored backgrounds (Hero, Transformation) */
-  .bg-brand-pink strong, .bg-brand-pink b,
-  .bg-brand-purple strong, .bg-brand-purple b {
-    @apply text-white drop-shadow-md;
-    text-decoration: underline;
-    text-decoration-color: rgba(255,255,255,0.4);
-    text-underline-offset: 4px;
-    text-decoration-thickness: 3px;
-  }
 }
 
 @layer utilities {
@@ -113,5 +84,39 @@
   50% {
     transform: scale(1.05);
   }
+}
+
+/* -------------------------------------------------------------
+ * Custom Styles (Outside Tailwind layers to prevent variant bugs)
+ * ------------------------------------------------------------- */
+
+/* Text color for strong tags on light backgrounds (Pain, Guarantee, etc) */
+.bg-white strong, .bg-white b,
+.bg-gray-50 strong, .bg-gray-50 b {
+  @apply text-brand-purple;
+}
+
+/* Highlight effect for strong on light backgrounds */
+.bg-white strong::after, .bg-white b::after,
+.bg-gray-50 strong::after, .bg-gray-50 b::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background-color: rgba(238, 158, 211, 0.3); /* brand-lightpink with opacity */
+  z-index: -1;
+  border-radius: 2px;
+}
+
+/* Text color for strong tags on dark/colored backgrounds (Hero, Transformation) */
+.bg-brand-pink strong, .bg-brand-pink b,
+.bg-brand-purple strong, .bg-brand-purple b {
+  @apply text-white drop-shadow-md;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.4);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 3px;
 }
 
