@@ -13,39 +13,49 @@ export default function HeroSection() {
         <div className="absolute top-1/2 right-0 w-80 h-80 bg-brand-lightpurple rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
       </div>
 
-      <div className="container relative z-10 flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
-        {/* Badge de urgencia */}
-        <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold text-sm tracking-wide px-6 py-2 rounded-full animate-fade-in-up">
-          {hero.badge}
-        </div>
+      <div className="container relative z-10 flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto w-full">
+        {/* Text Content */}
+        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-6 w-full">
+          <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold text-xs md:text-sm tracking-wide px-4 py-2 md:px-6 rounded-full animate-fade-in-up shadow-sm">
+            {hero.badge}
+          </div>
 
-        {/* Headline principal */}
-        <h1 className="font-extrabold text-4xl md:text-6xl text-white leading-tight tracking-tight drop-shadow-md animate-fade-in-up animation-delay-100">
-          {hero.headline}
-        </h1>
+          <h1 
+            className="font-extrabold text-3xl md:text-5xl lg:text-6xl text-white leading-tight tracking-tight drop-shadow-md animate-fade-in-up animation-delay-100 break-words w-full"
+            dangerouslySetInnerHTML={{ __html: hero.headline }}
+          />
 
-        {/* Sub-headline */}
-        <p className="text-lg md:text-2xl text-white/90 max-w-2xl font-medium leading-relaxed drop-shadow-sm animate-fade-in-up animation-delay-200">
-          {hero.subheadline}
-        </p>
+          <p 
+            className="text-base md:text-xl text-white/90 max-w-2xl font-medium leading-relaxed drop-shadow-sm animate-fade-in-up animation-delay-200 break-words w-full"
+            dangerouslySetInnerHTML={{ __html: hero.subheadline }}
+          />
 
-        {/* CTA */}
-        <div className="flex flex-col items-center gap-6 w-full animate-fade-in-up animation-delay-300">
-          <BuyButton id="btn-hero" size="lg" label={hero.ctaButton} variant="primary" />
-          
-          <div className="flex flex-wrap justify-center gap-4 mt-2">
-            {hero.trustBadges.map((badge, i) => (
-              <span key={i} className="text-sm font-semibold text-white/90 bg-black/20 backdrop-blur-sm border border-black/10 px-4 py-1.5 rounded-full">
-                {badge}
-              </span>
-            ))}
+          <div className="flex flex-col items-center lg:items-start gap-4 w-full animate-fade-in-up animation-delay-300 mt-4">
+            <BuyButton id="btn-hero" size="lg" label={hero.ctaButton} variant="primary" />
+            
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2 md:gap-4 mt-2">
+              {hero.trustBadges.map((badge, i) => (
+                <span key={i} className="text-xs md:text-sm font-semibold text-white/90 bg-black/20 backdrop-blur-sm border border-black/10 px-3 py-1.5 rounded-full">
+                  {badge}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Flecha hacia abajo */}
-        <div className="text-4xl text-white/80 animate-bounce mt-12">
-          ↓
-        </div>
+        {/* Image Content (if any) */}
+        {hero.mainImage && (
+          <div className="flex-1 w-full max-w-md lg:max-w-lg animate-fade-in-up animation-delay-400">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 transform hover:scale-105 transition-transform duration-300">
+              <img 
+                src={hero.mainImage} 
+                alt="Curso de Mantequillas Corporales" 
+                className="w-full h-auto object-cover aspect-[4/5] sm:aspect-square"
+                loading="eager"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
